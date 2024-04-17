@@ -3,7 +3,11 @@ import React from 'react'
 import { GrAdd } from "react-icons/gr";
 import { AiOutlineSearch } from "react-icons/ai";
 
-export const Contentbar = () => {
+interface ContentBarProps {
+  enableAddButton: boolean
+}
+
+export const Contentbar = ({ enableAddButton }: ContentBarProps) => {
   return (
     <div className='contentbar-wrapper'>
         <div className='contentbar-container'>
@@ -15,7 +19,7 @@ export const Contentbar = () => {
                   <input type='text' className='add-input search-input' placeholder='Search notes...'></input>
                   <button type="submit" id="search-button"><AiOutlineSearch /></button>
                 </div>
-                <button><GrAdd /> <span>ADD NOTE</span></button>
+                {enableAddButton ? (<button><GrAdd /> <span>ADD NOTE</span></button>) : (null)}
               </div>
               <div className='tabs'>
                 <span className='selected-tab'>All</span>

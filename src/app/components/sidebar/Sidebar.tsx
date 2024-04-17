@@ -8,10 +8,21 @@ import { GrNotes } from "react-icons/gr";
 import { GrAdd } from "react-icons/gr";
 import { IoSettingsSharp } from "react-icons/io5";
 import { IoSettings } from "react-icons/io5";
+import { useRouter } from "next/navigation"
 
-export const Sidebar = () => {
+interface SidebarProps {
+    onTrashClick: () => void
+}
 
+export const Sidebar = ({ onTrashClick } : SidebarProps) => {
+
+    const router = useRouter();
  // const { data } = useSuspenseQuery();
+
+ function handleOnTrashClick(){
+    onTrashClick();
+    router.push('/sasd');
+ }
 
   return (
     <div className='sidebar-wrapper'>  
@@ -21,7 +32,7 @@ export const Sidebar = () => {
                 <GrNotes />
                 <span>All Notes</span>
             </div>
-            <div className='upper-section-element'>
+            <div className='upper-section-element' onClick={handleOnTrashClick}>
                 <BsTrash />
                 <span>Trash</span>
             </div>
